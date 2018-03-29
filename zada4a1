@@ -1,0 +1,32 @@
+public class Main {
+
+    public static void main(String[] args) {
+	 Scanner sc = new Scanner(System.in);
+     int x1 = sc.nextInt();
+	 Scanner sc = new Scanner(System.in);
+     int x2 = sc.nextInt();
+	 Scanner sc = new Scanner(System.in);
+     int y1 = sc.nextInt();
+	 Scanner sc = new Scanner(System.in);
+     int y2 = sc.nextInt();
+       // int x1= 5;
+       // int x2= 10;
+       // int y1 = 5;
+       // int y2 = 10;
+       // int x;
+       
+        int a = x2-x1;
+        int b = y2-y1;
+        int P = (a+b)*2;
+        int Sum = a*b;
+
+        System.out.println(P);
+        System.out.println(Sum);
+
+
+
+
+
+
+    }
+}
