@@ -7,8 +7,9 @@ print(math.sqrt(c))
 
 # Task2
 number = int(input('Enter value '))
-number = number //10
+number = number // 10
 print(number)
+
 # Task3
 number = int(input('Enter value '))
 number = str(number)
@@ -17,15 +18,18 @@ n2 = int(number[1])
 n3 = int(number[2])
 summ = n1+n2+n3
 print(summ)
+
 # Task4
 number = int(input('Enter value '))
 if number % 2 == 0:
     print(number+2)
 else:
     print(number+1)
+
 # Task5
 number = float(input('Enter value'))
-print(str(number % 1)[2:])
+print(int(number % 1))
+
 # Task6
 number = float(input('Enter value'))
 print(str(number % 1)[2:])
