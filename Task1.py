@@ -1,23 +1,5 @@
-################################# Task 1
-string = input()
-print(string.isdigit())
-
-################################# Task 2
-string = input()
-number = string.count('.')
-print(number)
-
-################################# Task 3
-string = input()
-number = string.count(' ')
-print(number)
-
-################################# Task 4
-string = 'HomeWork'
-string = string.center(100)
-print(string)
-print(len(string))
-
-################################# Task 5
-string = input()
-print(string.title())
+string = input('Enter string')
+try:
+    print(string[2], string[-2], string[0:5], string[0:-2], string[0::2], string[1::2], string[::-1], string[::-2], string[-2:0:-1], len(string), sep='\n')
+except IndexError as e:
+    print(e)

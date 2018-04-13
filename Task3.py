@@ -1,5 +1,8 @@
-a = input('Enter the value ')
-if ((a%4 == 0 and a%100 != 0) or (a%400 == 0)):
-    print('High year')
-else:
-    print('Low year')
+p = 20
+i = 0
+while i <= 10:
+    print(i)
+    i += 1
+while p >= 1:
+    print(p)
+    p -= 1
