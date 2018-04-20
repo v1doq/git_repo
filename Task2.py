@@ -1,10 +1,12 @@
-string = input('Enter string')
-s = str(string)
-sep = int(len(string) / 2)
-end = int(len(string))
-if (len(string)) % 2 == 0:
-    string = string[sep: end] + string[0:sep]
-    print(string)
-else:
-    string = string[sep + 1: end] + string[0:sep + 1]
-    print(string)
+def pre_max_value(*numbers):
+    values = list(numbers)
+    values = sorted(values)
+    n = -1
+    while True:
+        if values[-1] == values[n]:
+            n = n - 1
+        else:
+            return values[n]
+
+
+print(pre_max_value(8, 3, 8, 5, 5, 6, 7, 6, 6))
