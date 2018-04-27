@@ -42,3 +42,4 @@ class ITEmployee(Employee):
         self.skills.append(new_skill)
 
     def add_skills(self, *args):
+        pass

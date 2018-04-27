@@ -13,9 +13,10 @@ def triangle(a, b, c):
     else:
         return ('It is not a triangle')
 
-
+'''
 a = input('Enter the value ')
 b = input('Enter the value ')
 c = input('Enter the value ')
 result = triangle(a, b, c)
 print(result)
+'''
