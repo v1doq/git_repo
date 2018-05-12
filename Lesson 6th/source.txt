@@ -1,0 +1,1 @@
+The server and client negotiate the details of which encryption algorithm and cryptographic keys to use before the first byte of data is transmitted
