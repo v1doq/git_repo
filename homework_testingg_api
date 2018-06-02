@@ -1,0 +1,76 @@
+import requests
+import unittest
+
+
+class CreateBookTests(unittest.TestCase):
+
+    def setUp(self):
+        self.base_url = "http://pulse-rest-testing.herokuapp.com/"
+        self.books = [
+            {"title": "asdasdasda", "author": "asasdaasdas"},
+            {"title": "#$%^&", "author": "$%^&*("},
+            {"title": "1235", "author": "2141241"},
+        ]
+
+    def test_create_book_positive(self):
+        response = requests.post(self.base_url + "books/", data=self.books)
+        self.assertEqual(response.status_code, 201)
+        self.assertIn(response.json()["title"], self.books["title"])
+        body = response.json()
+        r = requests.get(self.base_url + "books" + str(body["id"]))
+        self.assertEqual(response.status_code, 201)
+
+    def test_create_book_negative(self):
+        book = {"title": "asdasdasda"}
+        response = requests.post(self.base_url + "books/", data=book)
+        self.assertEqual(response.status_code, 400)
+
+    def test_change_book_positive(self):
+        book = {"title": "test_put", "author": "test_put"}
+        r = requests.get(self.base_url + "books/")
+        r = r.json()
+        r = requests.put(self.base_url + "books/" + str(r["id"]), data=book)
+        self.assertEquals(book, r)
+
+
+class CreateRolesTests(unittest.TestCase):
+
+    def setUp(self):
+        self.base_url = "http://pulse-rest-testing.herokuapp.com/"
+        #  self.roles = [
+        #      {"name": "Albert", "type": "Wizard", "level": 80, "book": 10},
+        #      {"name": "25425", "type": "Wizard", "level": 80, "book": 10},
+        #      {"name": "Albert", "type": "2452", "level": 80, "book": 10}]
+        self.roles = {"name": "Albert", "type": "Wizard", "level": 80, "book": 10}
+        self.roles1 = {"name": "Bilbo", "type": "Hobbit", "level": 80, "book": 88}
+
+    def test_create_role_positive(self):
+        response = requests.post(self.base_url + "roles/", data=self.roles)
+        response = response.json()
+        self.assertEqual(response.status_code, 201)
+        res = requests.get(self.base_url + "roles/" + str(response["id"]))
+        self.assertEqual(response, res)
+
+    def test_create_roles_negative(self):
+        response = requests.post(self.base_url + "roles/", data=self.roles1)
+        self.assertEqual(response.status_code, 400)
+
+    def test_change_roles_positive(self):
+        response = requests.post(self.base_url + "roles/", data=self.roles)
+        response = response.json()
+        self.assertEqual(response.status_code, 201)
+        res = requests.put(self.base_url + "roles/" + str(response["id"]), data=self.roles1)
+        res = res.json()
+        self.assertEqual(res, self.roles1)
+
+    def test_change_roles_negative(self):
+        roles = {"name": "Albert", "type": "Wizard", "level": 80, "book": 10}
+        roles1 = {"name": "$%^&*()()", "type": 321, "level": "^%&*())_", "book": "%%&*((sdfsd"}
+        response = requests.post(self.base_url + "roles/", data=self.roles)
+        response = response.json()
+        self.assertEqual(response.status_code, 201)
+        res = requests.put(self.base_url + "roles/" + str(response["id"]), data=self.roles1)
+        self.assertEqual(res.status_code, 400)
+
+
+if __name__ == "__main__":
